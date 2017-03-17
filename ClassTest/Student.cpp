@@ -6,9 +6,15 @@
  */
 
 #include "Student.h"
+#include <iostream>
 
-int Student::rate = 0.5;
+double Student::rate = 0.5;
 
 Student::Student(string n, double nv, double ev) :
 		name(n), normScore(nv), examScore(ev) {
+}
+
+void Student::dispaly() const {
+	std::cout << name << "\t" << normScore << "\t"
+			<< normScore * rate + examScore * (1 - rate) << std::endl;
 }

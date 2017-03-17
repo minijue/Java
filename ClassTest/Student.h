@@ -14,11 +14,14 @@ class Student {
 public:
 	Student() = default;
 	explicit Student(string name, double nv, double ev);
+
+	void dispaly() const;
+
+	static double rate;
 private:
 	string name;
 	double normScore = 0.0;
 	double examScore = 0.0;
-	static double rate;
 };
 
 #endif /* STUDENT_H_ */
