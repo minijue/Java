@@ -6,6 +6,7 @@ interface NumericTest {
 public class lambdaDemo2 {
 
 	public static void main(String[] args) {
+		// Lambda表达式
 		NumericTest isFactor=(n,d)->(n%d)==0;
 		
 		if(isFactor.test(10, 2))
