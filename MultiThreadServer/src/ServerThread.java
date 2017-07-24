@@ -22,7 +22,9 @@ public class ServerThread implements Runnable {
 				OutputStream os;
 				try {
 					os = s.getOutputStream();
-					os.write((content + "\n").getBytes("utf-8"));
+					byte[] outstr = (content + "\n").getBytes("utf-8");
+					System.out.println(content + "\n");
+					os.write(outstr);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
