@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class login
@@ -29,15 +30,20 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		if (request.getParameter("user") == null || request.getParameter("pwd") == null) {
+		String username = request.getParameter("user");
+		String password = request.getParameter("pwd");
+		if (username == null || password == null) {
 			response.getOutputStream().write("参数为空!".getBytes("utf-8"));
 			return;
 		}
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
+		session.setAttribute("password", password);
 
-		if (!request.getParameter("user").equals("wangjue") || !request.getParameter("pwd").equals("www")) {
+		if (!username.equals("wangjue") || !password.equals("www")) {
 			response.getOutputStream().write("登录失败!".getBytes("utf-8"));
 		} else {
-			response.getWriter().append("登录成功!");
+			response.getWriter().append("<a href=\'test.html\'>登录成功!</a>");
 		}
 	}
 
